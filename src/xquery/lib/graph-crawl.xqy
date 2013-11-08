@@ -1,3 +1,7 @@
+xquery version "1.0-ml";
+
+(: Copyright 2013 MarkLogic Corporation.  All Rights Reserved. :)
+
 (: Breadth-first search and related graph crawl algorithms :)
 
 module namespace graph = "http://github.com/mdubinko/glom/graph-crawl";
