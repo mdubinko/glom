@@ -1,4 +1,4 @@
 glom
 ====
 
-Graph, Clustering, and Machine Learning algorithms on MarkLogic
+Graph, Clustering algorithms on MarkLogic
