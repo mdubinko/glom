@@ -35,3 +35,24 @@ declare %test:case function transitive-closure-2() {
     let $count := fn:count($result)
     return assert:equal($count, 102)
 };
+
+declare %test:case function shortest-path-1() {
+    let $result := graph:shortest-path($curie("ntn:Abraham"), $curie("ntn:Jacob"), 50, function($s) { cts:triples($s, $curie("ntn:parentOf"), ()) } )
+    let $count := fn:count($result)
+    return assert:equal($count, 2)
+};
+
+declare %test:case function shortest-path-2() {
+    let $result := graph:shortest-path($curie("ntn:Abraham"), $curie("ntn:Jesus"), 50, function($s) { cts:triples($s, (), ())[sem:triple-object(.) instance of sem:iri] } )
+    let $_ := xdmp:log($result)
+    let $count := fn:count($result)
+    return assert:equal($count, 3)
+};
+
+declare %test:case function shortest-path-3() {
+    let $result := graph:shortest-path($curie("ntn:Paul"), $curie("ntn:Fortunatus"), 50, function($s) { cts:triples($s, ($curie("ntn:collaboratesWith"),$curie("ntn:knows")), ()) } )
+    let $_ := xdmp:log($result)
+    let $count := fn:count($result)
+    return assert:equal($count, 1)
+};
+
